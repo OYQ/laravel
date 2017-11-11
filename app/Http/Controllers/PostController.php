@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Post;
 use \App\Comment;
+use \App\Zan;
 
 class PostController extends Controller
 {
@@ -17,7 +18,7 @@ class PostController extends Controller
 //        $log = $app-> make('log');
 //        $log->info("post_index",['data' => 'this is post index']);
 
-        $posts = Post::orderBy('created_at','desc')->withCount('comments')->paginate(6);
+        $posts = Post::orderBy('created_at','desc')->withCount(['comments','zans'])->paginate(6);
         return view("post/index",compact('posts'));
 //        return view("post/index",['posts' => $posts]);
     }
@@ -103,6 +104,20 @@ class PostController extends Controller
     }
 
 
+    //赞和取消赞
+    public function zan(Post $post){
+        $param = [
+            'user_id' => \Auth::id(),
+            'post_id' => $post->id,
+        ];
+        Zan::firstOrCreate($param);
+        return back();
+    }
+
+    public function unzan(Post $post){
+        $post->zan(\Auth::id())->delete();
+        return back();
+    }
 
 
 }

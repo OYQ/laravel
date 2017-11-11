@@ -81,6 +81,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/posts/image/upload','\App\Http\Controllers\PostController@imageUpload');
     //评论文章
     Route::post('/posts/{post}/comment','\App\Http\Controllers\PostController@comment');
+    //赞和取消赞
+    Route::get('/posts/{post}/zan','\App\Http\Controllers\PostController@zan');
+    Route::get('/posts/{post}/unzan','\App\Http\Controllers\PostController@unzan');
 });
 
 
