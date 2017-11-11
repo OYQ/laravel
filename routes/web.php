@@ -72,18 +72,23 @@ Route::get('/posts/{post}','\App\Http\Controllers\PostController@show')->where('
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/posts/create','\App\Http\Controllers\PostController@create');
     Route::post('/posts','\App\Http\Controllers\PostController@store');
-//编辑文章
+    //编辑文章
     Route::get('/posts/{post}/edit','\App\Http\Controllers\PostController@edit');
     Route::put('/posts/{post}','\App\Http\Controllers\PostController@update');
-//删除文章
+    //删除文章
     Route::get('/posts/{post}/delete','\App\Http\Controllers\PostController@delete');
-//上传图片
+    //上传图片
     Route::post('/posts/image/upload','\App\Http\Controllers\PostController@imageUpload');
     //评论文章
     Route::post('/posts/{post}/comment','\App\Http\Controllers\PostController@comment');
     //赞和取消赞
     Route::get('/posts/{post}/zan','\App\Http\Controllers\PostController@zan');
     Route::get('/posts/{post}/unzan','\App\Http\Controllers\PostController@unzan');
+
+    //个人中心
+    Route::get('/user/{user}','\App\Http\Controllers\UserController@show');
+    Route::post('/user/{user}/fan','\App\Http\Controllers\UserController@fan');
+    Route::post('/user/{user}/unfan','\App\Http\Controllers\UserController@unfan');
 });
 
 
