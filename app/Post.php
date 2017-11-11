@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Model;
+use PhpParser\Builder;
 
 //对应表posts
 class Post extends Model
@@ -39,5 +40,22 @@ class Post extends Model
     //获取文章所有赞
     public function zans(){
         return $this->hasMany('App\zan');
+    }
+
+    //属于某个作者的文章
+    public function scopeAuthorBy($query,$user_id){
+        return $query->where('user_id',$user_id);
+    }
+
+    //关联
+    public function postTopics(){
+        return $this->hasMany(\App\PostTopic::class,'post_id','id');
+    }
+
+    //不属于某个专题的文章
+    public function scopeTopicNotBy($query, $topic_id){
+        return $query->doesntHave('postTopics','and',function ($q) use($topic_id){
+            $q->where('topic_id', $topic_id);
+        });
     }
 }

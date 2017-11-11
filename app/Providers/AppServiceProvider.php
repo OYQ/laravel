@@ -13,7 +13,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //所有函数启动之后执行
+        //所有ServiceProvider注册之后执行
+
+        //模板注入
+        \View::composer('layout.sidebar',function ($view){
+            $topics = \App\Topic::all();
+            $view->with('topics',$topics);
+        });
     }
 
     /**
@@ -23,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //所有函数启动之前执行
+        //所有ServiceProvider注册之前执行
     }
 }
