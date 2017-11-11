@@ -15,13 +15,7 @@
                     </div>
                     <textarea id="content"  style="display:none" name="content" class="form-control" placeholder="这里是内容"></textarea>
                 </div>
-                @if(count($errors) > 0)
-                <div class="alert alert-danger" role="alert">
-                    @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                    @endforeach
-                </div>
-                @endif
+                @include('layout/error')
                 <button type="submit" class="btn btn-default">提交</button>
             </form>
             <br>

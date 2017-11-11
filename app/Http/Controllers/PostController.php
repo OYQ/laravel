@@ -4,18 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Post;
+use \App\Comment;
 
 class PostController extends Controller
 {
     //文章列表
     public function index(){
-        $posts = Post::orderBy('created_at','desc')->paginate(6);
+//        打印日志
+        //获取当前app
+//        $app = app();
+//        //通过log获取注册在容器中的log实例
+//        $log = $app-> make('log');
+//        $log->info("post_index",['data' => 'this is post index']);
+
+        $posts = Post::orderBy('created_at','desc')->withCount('comments')->paginate(6);
         return view("post/index",compact('posts'));
 //        return view("post/index",['posts' => $posts]);
     }
 
     //文章详情
     public function show(Post $post){
+        //在这里提前加载comments，在渲染的时候，就不会进行查询操作
+        $post->load('comments');
         return view("post/show",compact('post'));
     }
 
@@ -27,27 +37,39 @@ class PostController extends Controller
     public function store(){
         //1.不要信息前端，要验证一下
         $this->validate(request(),[
-                'title' => 'required|string|max:100|min:5',
-                'content' => 'required|string|min:10'
-            ]);
+            'title' => 'required|string|max:100|min:5',
+            'content' => 'required|string|min:1',
+        ]);
         //2.逻辑
+        $user_id = \Auth::id();
+        $params = array_merge(request(['title','content']), compact('user_id'));
         //如果有error的话，会给视图传入errors参数
-        Post::create(request(['title','content']));
+        Post::create($params);
 
         //3.渲染，跳转等
         return redirect("/posts");
     }
     //编辑页面
-    public function edit(){
-        return view("post/edit");
+    public function edit(Post $post){
+        return view("post/edit", compact('post'));
     }
 
     //编辑文章
-    public function update(){
-        return;
+    public function update(Post $post){
+        $this->validate(request(),[
+            'title' => 'required|string|max:100|min:1',
+            'content' => 'required|string|min:10',
+        ]);
+        $this->authorize('update',$post);
+
+        $post->title = request('title');
+        $post->content = request('content');
+        $post->save();
+        return redirect("/posts/{$post->id}");
     }
     //删除文章
     public function delete(Post $post){
+        $this->authorize('delete',$post);
         //验证用户权限
         $post->delete();
         return redirect("/posts");
@@ -62,6 +84,25 @@ class PostController extends Controller
             'data' => [asset('storage/'.$path)]
         ]);
     }
+
+    //评论
+    public function comment(Post $post){
+        $this->validate(request(),[
+            'content' => 'required|string|min:3',
+        ]);
+        $comment = new  Comment();
+        $comment->user_id = \Auth::id();
+        $comment->content = request('content');
+
+        //这个会给comment设置post_id
+        $post->comments()->save($comment);
+//        $comment->save();
+
+
+        return back();
+    }
+
+
 
 
 }
