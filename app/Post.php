@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Model;
+use function foo\func;
 use PhpParser\Builder;
 
 //对应表posts
@@ -56,6 +57,15 @@ class Post extends Model
     public function scopeTopicNotBy($query, $topic_id){
         return $query->doesntHave('postTopics','and',function ($q) use($topic_id){
             $q->where('topic_id', $topic_id);
+        });
+    }
+
+    //全局scope
+    protected static function boot(){
+        parent::boot();
+
+        static::addGlobalScope("avaiable",function ($builder){
+           $builder->whereIn('status',[0,1]);
         });
     }
 }
