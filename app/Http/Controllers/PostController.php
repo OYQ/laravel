@@ -18,7 +18,12 @@ class PostController extends Controller
 //        $log = $app-> make('log');
 //        $log->info("post_index",['data' => 'this is post index']);
 
-        $posts = Post::orderBy('created_at','desc')->withCount(['comments','zans'])->paginate(6);
+        //预加载用户
+        $posts = Post::orderBy('created_at','desc')->withCount(['comments','zans'])->with('user')->paginate(6);
+
+//        $posts = Post::orderBy('created_at','desc')->withCount(['comments','zans'])->paginate(6);
+//        $posts->load('user');
+        
         return view("post/index",compact('posts'));
 //        return view("post/index",['posts' => $posts]);
     }
