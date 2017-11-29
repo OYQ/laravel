@@ -111,7 +111,7 @@
 <script src="/adminlte/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/adminlte/dist/js/demo.js"></script>
-<script src="/js/admin.js"></script>
+{{--<script src="/js/admin.js"></script>--}}
 
 
 </body>
