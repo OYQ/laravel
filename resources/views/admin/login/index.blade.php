@@ -8,7 +8,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="/adminlte/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -35,7 +35,7 @@
         <p class="login-box-msg">登陆</p>
 
         <form action="/admin/login" method="post">
-            <input type="hidden" name="_token" value="RPPMc0lhvtynKELDZljXlz9UZI9uNc55ip1P8GCM">
+            {{csrf_field()}}
             <div class="form-group has-feedback">
                 <input name="name" type="text" class="form-control" placeholder="名字">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -51,6 +51,7 @@
                 </div>
                 <!-- /.col -->
             </div>
+            @include("admin.layout.error")
         </form>
 
     </div>
