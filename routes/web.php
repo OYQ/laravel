@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
+    //将admin的login改到这一页
     return view('welcome');
 });
+
+
+include_once('admin.php');
