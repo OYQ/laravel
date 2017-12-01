@@ -25,8 +25,8 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i>图表统计</a></li>
-                    <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i>实时数据</a></li>
+                    <li><a href="chartStatistics"><i class="fa fa-circle-o"></i>图表统计</a></li>
+                    <li><a href="chartRealTime"><i class="fa fa-circle-o"></i>实时数据</a></li>
                 </ul>
             </li>
             <li class="treeview">

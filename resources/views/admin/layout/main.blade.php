@@ -34,7 +34,7 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
-
+@yield("link")
 
 
 
@@ -56,12 +56,14 @@
         <!-- Main content -->
         @yield("content")
         <!-- /.content -->
+
     </div>
     <!-- /.content-wrapper -->
     <!-- /.control-sidebar -->
     <!-- Add the sidebar's background. This div must be placed
          immediately after the control sidebar -->
-    <div class="control-sidebar-bg"></div>
+        @yield("control-sidebar")
+        <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
 
@@ -113,6 +115,6 @@
 <script src="/adminlte/dist/js/demo.js"></script>
 {{--<script src="/js/admin.js"></script>--}}
 
-
+@yield("page script")
 </body>
 </html>
