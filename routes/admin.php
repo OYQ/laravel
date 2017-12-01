@@ -1,12 +1,6 @@
 <?php
 
 Route::group(['prefix' => 'admin'],function (){
-    //登录页面
-    Route::get('/login','\App\admin\Controllers\LoginController@index')->name('login');
-    //登录行为
-    Route::post('/login','\App\admin\Controllers\LoginController@login');
-    //登出行为
-    Route::get('/logout','\App\admin\Controllers\LoginController@logout');
 
     Route::group(['middleware' => 'auth:admin'],function (){
         //首页
@@ -14,6 +8,13 @@ Route::group(['prefix' => 'admin'],function (){
 
         //仪表盘
         Route::get('/dashboard','\App\admin\Controllers\DashboardController@index');
+
+        //数据图表
+        //数据统计
+        Route::get('/chartStatistics','\App\admin\Controllers\ChartsController@chartStatistics');
+        //实时数据
+        Route::get('/chartRealTime','\App\admin\Controllers\ChartsController@chartRealTime');
+
     });
 
 });
