@@ -11,6 +11,9 @@ Route::group(['prefix' => 'admin'],function (){
     Route::group(['middleware' => 'auth:admin'],function (){
         //首页
         Route::get('/home','\App\admin\Controllers\HomeController@index');
+
+        //仪表盘
+        Route::get('/dashboard','\App\admin\Controllers\DashboardController@index');
     });
 
 });
