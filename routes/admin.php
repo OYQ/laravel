@@ -15,6 +15,9 @@ Route::group(['prefix' => 'admin'],function (){
         //实时数据
         Route::get('/chartRealTime','\App\admin\Controllers\ChartsController@chartRealTime');
 
+        //详细数据
+        Route::get('/dataTable','\App\admin\Controllers\TableController@dataTable');
+
     });
 
 });
