@@ -306,7 +306,7 @@
 <!-- Bootstrap 3.3.7 -->
 
 <!-- ChartJS -->
-<script src="../../adminlte/bower_components/Chart.js/Chart.js"></script>
+<script src="../../adminlte/bower_components/chart.js/Chart.js"></script>
 
 
 <script>
