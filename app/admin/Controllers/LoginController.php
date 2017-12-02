@@ -17,7 +17,7 @@ class LoginController extends Controller{
         //逻辑
         $user = request(['name','password']);
         if (\Auth::guard("admin")->attempt($user)){
-            return redirect('/admin/home');
+            return redirect('/admin/dashboard');
         }
 
         //渲染
