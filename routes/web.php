@@ -26,4 +26,7 @@ Route::post('/','\App\admin\Controllers\LoginController@login');
 Route::get('/logout','\App\admin\Controllers\LoginController@logout');
 
 
+//返回第一个数据
+Route::get('/first','\App\admin\Controllers\EnvInformationController@first');
+
 include_once('admin.php');
