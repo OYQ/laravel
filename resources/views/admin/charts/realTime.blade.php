@@ -19,7 +19,7 @@
         <section class="content">
             <div class="row">
                 <div class="col-xs-12">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto blanditiis distinctio dolorum eius eum, exercitationem in labore non nostrum pariatur, perspiciatis tempore totam! Exercitationem facere magni natus quidem similique unde.
+                    <div id="container" style="min-width:400px;height:400px"></div>
 
                 </div>
                 <!-- /.col -->
@@ -41,8 +41,7 @@
 
 
 @section("page script")
-    <!-- FLOT CHARTS -->
-    {{--<script src="../../adminlte/bower_components/Flot/jquery.flot.js"></script>--}}
-    <!-- Page script -->
 
+    <script src="../../highcharts/highcharts.js"></script>
+    <script src="../../js/charts/realTime.js"></script>
 @endsection
