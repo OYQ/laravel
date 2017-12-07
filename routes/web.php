@@ -28,15 +28,15 @@ Route::get('/logout','\App\admin\Controllers\LoginController@logout');
 
 //返回第一个所有数据
 Route::get('/firstInfo','\App\admin\Controllers\EnvInformationController@firstInfo');
-//返回第一个温度数据
-Route::get('/{}/temperature','\App\admin\Controllers\EnvInformationController@temperature');
+//返回前number条温度数据
+Route::get('/{number}/temperature','\App\admin\Controllers\EnvInformationController@temperature');
 //返回第一个湿度数据
-Route::get('/first/humidity','\App\admin\Controllers\EnvInformationController@humidity');
+Route::get('/{number}/humidity','\App\admin\Controllers\EnvInformationController@humidity');
 //返回第一个光照强度数据
-Route::get('/first/lightIntensity','\App\admin\Controllers\EnvInformationController@lightIntensity');
+Route::get('/{number}/lightIntensity','\App\admin\Controllers\EnvInformationController@lightIntensity');
 //返回第一个土壤湿度数据
-Route::get('/first/soilMoisture','\App\admin\Controllers\EnvInformationController@soilMoisture');
+Route::get('/{number}/soilMoisture','\App\admin\Controllers\EnvInformationController@soilMoisture');
 //返回第一个雨量数据
-Route::get('/first/rainfall','\App\admin\Controllers\EnvInformationController@rainfall');
+Route::get('/{number}/rainfall','\App\admin\Controllers\EnvInformationController@rainfall');
 
 include_once('admin.php');

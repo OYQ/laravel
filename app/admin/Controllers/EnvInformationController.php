@@ -5,6 +5,17 @@ namespace App\admin\Controllers;
 use App\EnvInformation as env;
 
 class EnvInformationController extends Controller{
+
+    //检查number
+    public function checkNumber($number){
+        if($number <= 0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+
     //返回第一条所有数据
     public function firstInfo(){
         $model = env::first();
@@ -17,53 +28,125 @@ class EnvInformationController extends Controller{
     }
 
     public function temperature($number){
-        $model = env::first();
-        $temp = $model->temperature;
-        return response()->json(['status' => 1,
-            'error' => 0,
-            'msg' => '',
-            'data' => $temp
-        ]);
+        if ($this->checkNumber($number)){
+            $models = env::select('temperature')->orderBy('time', 'desc') ->take($number) ->get();
+            $arr = array();
+            foreach($models as $model){
+                $arr[] = $model->temperature;
+            }
+
+            return response()->json([
+                'status' => 1,
+                'error' => 0,
+                'msg' => '',
+                'data' => $arr
+            ]);
+        }else{
+            return response()->json([
+                'status' => 1,
+                'error' => 1,
+                'msg' => '发生错误',
+                'data' => ''
+            ]);
+        }
+
+
     }
 
-    public function humidity(){
-        $model = env::first();
-        $temp = $model->humidity;
-        return response()->json(['status' => 1,
-            'error' => 0,
-            'msg' => '',
-            'data' => $temp
-        ]);
+    public function humidity($number){
+        if ($this->checkNumber($number)){
+            $models = env::select('humidity')->orderBy('time', 'desc') ->take($number) ->get();
+            $arr = array();
+            foreach($models as $model){
+                $arr[] = $model->humidity;
+            }
+
+            return response()->json([
+                'status' => 1,
+                'error' => 0,
+                'msg' => '',
+                'data' => $arr
+            ]);
+        }else{
+            return response()->json([
+                'status' => 1,
+                'error' => 1,
+                'msg' => '发生错误',
+                'data' => ''
+            ]);
+        }
     }
 
-    public function lightIntensity(){
-        $model = env::first();
-        $temp = $model->lightIntensity;
-        return response()->json(['status' => 1,
-            'error' => 0,
-            'msg' => '',
-            'data' => $temp
-        ]);
+    public function lightIntensity($number){
+        if ($this->checkNumber($number)){
+            $models = env::select('lightIntensity')->orderBy('time', 'desc') ->take($number) ->get();
+            $arr = array();
+            foreach($models as $model){
+                $arr[] = $model->lightIntensity;
+            }
+
+            return response()->json([
+                'status' => 1,
+                'error' => 0,
+                'msg' => '',
+                'data' => $arr
+            ]);
+        }else{
+            return response()->json([
+                'status' => 1,
+                'error' => 1,
+                'msg' => '发生错误',
+                'data' => ''
+            ]);
+        }
     }
 
-    public function soilMoisture(){
-        $model = env::first();
-        $temp = $model->soilMoisture;
-        return response()->json(['status' => 1,
-            'error' => 0,
-            'msg' => '',
-            'data' => $temp
-        ]);
+    public function soilMoisture($number){
+        if ($this->checkNumber($number)){
+            $models = env::select('soilMoisture')->orderBy('time', 'desc') ->take($number) ->get();
+            $arr = array();
+            foreach($models as $model){
+                $arr[] = $model->soilMoisture;
+            }
+
+            return response()->json([
+                'status' => 1,
+                'error' => 0,
+                'msg' => '',
+                'data' => $arr
+            ]);
+        }else{
+            return response()->json([
+                'status' => 1,
+                'error' => 1,
+                'msg' => '发生错误',
+                'data' => ''
+            ]);
+        }
     }
 
-    public function rainfall(){
-        $model = env::first();
-        $temp = $model->rainfall;
-        return response()->json(['status' => 1,
-            'error' => 0,
-            'msg' => '',
-            'data' => $temp
-        ]);
+    public function rainfall($number){
+        if ($this->checkNumber($number)){
+            $models = env::select('rainfall')->orderBy('time', 'desc') ->take($number) ->get();
+            $arr = array();
+            foreach($models as $model){
+                $arr[] = $model->rainfall;
+            }
+
+            return response()->json([
+                'status' => 1,
+                'error' => 0,
+                'msg' => '',
+                'data' => $arr
+            ]);
+        }else{
+            return response()->json([
+                'status' => 1,
+                'error' => 1,
+                'msg' => '发生错误',
+                'data' => ''
+            ]);
+        }
     }
 
 }
