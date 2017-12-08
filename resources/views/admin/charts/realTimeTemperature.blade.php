@@ -19,11 +19,22 @@
         <section class="content">
             <div class="row">
                 <div class="col-xs-12">
-                    <div id="container" style="min-width:400px;height:400px"></div>
+
+                    <div id="temperature" style="min-width:400px;height:400px"></div>
 
                 </div>
                 <!-- /.col -->
             </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+
+                    {{--<div id="humidity" style="min-width:400px;height:400px"></div>--}}
+
+                </div>
+                <!-- /.col -->
+            </div>
+
             <!-- /.row -->
 
             <div class="row">
@@ -32,6 +43,7 @@
                 </div>
                 <div class="col-md-6">
                     col-md-6
+
                 </div>
             </div>
             <!-- /.row -->
@@ -43,5 +55,6 @@
 @section("page script")
 
     <script src="../../highcharts/highcharts.js"></script>
-    <script src="../../js/charts/realTime.js"></script>
+    <script src="../../js/charts/realTimeTemperature.js"></script>
+    {{--<script src="../../js/charts/realTimeHumidity.js"></script>--}}
 @endsection

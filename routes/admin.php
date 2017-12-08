@@ -13,7 +13,8 @@ Route::group(['prefix' => 'admin'],function (){
         //数据统计
         Route::get('/chartStatistics','\App\admin\Controllers\ChartsController@chartStatistics');
         //实时数据
-        Route::get('/chartRealTime','\App\admin\Controllers\ChartsController@chartRealTime');
+        Route::get('/chartRealTime/temperature','\App\admin\Controllers\ChartsController@temperature');
+        Route::get('/chartRealTime/humidity','\App\admin\Controllers\ChartsController@humidity');
 
         //详细数据
         Route::get('/dataTable','\App\admin\Controllers\TableController@dataTable');

@@ -7,8 +7,12 @@ class ChartsController extends Controller{
         return view('admin.charts.statistics');
     }
 
-    public function chartRealTime(){
-        return view('admin.charts.realTime');
+    public function temperature(){
+        return view('admin.charts.realTimeTemperature');
+    }
+
+    public function humidity(){
+        return view('admin.charts.realTimeHumidity');
     }
 
 }

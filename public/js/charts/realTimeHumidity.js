@@ -14,7 +14,7 @@ function activeLastPointToolip(chart) {
     var points = chart.series[0].points;
     chart.tooltip.refresh(points[points.length -1]);
 }
-$('#container').highcharts({
+$('#humidity').highcharts({
     chart: {
         type: 'spline',
         animation: Highcharts.svg, // don't animate in old IE
@@ -28,7 +28,7 @@ $('#container').highcharts({
                 setInterval(function () {
                     var x = (new Date()).getTime(); // current time
                     var y;
-                    $.getJSON('/1/temperature',function (Jsondata) {
+                    $.getJSON('/1/humidity',function (Jsondata) {
                         y = Number(Jsondata.data);
                     });
                     series.addPoint([x, y], true, true);
@@ -39,7 +39,7 @@ $('#container').highcharts({
         }
     },
     title: {
-        text: '动态模拟实时数据'
+        text: '实时湿度数据'
     },
     xAxis: {
         type: 'datetime',
@@ -47,7 +47,7 @@ $('#container').highcharts({
     },
     yAxis: {
         title: {
-            text: '值'
+            text: '湿度'
         },
         plotLines: [{
             value: 0,
@@ -69,15 +69,15 @@ $('#container').highcharts({
         enabled: false
     },
     series: [{
-        name: '随机数据',
+        name: '实时湿度',
         data: (function () {
             // generate an array of random data
             var data = [],
                 time = (new Date()).getTime(),
                 i;
             //数据量
-            var dataCount = 20*1000/timeIntervel;
-            $.getJSON('/'+dataCount+'/temperature',function (Jsondata) {
+            var dataCount = 20;
+            $.getJSON('/'+dataCount+'/humidity',function (Jsondata) {
                 for (i = 0; i < dataCount; i++) {
                     data.push({
                         x: time + (i-dataCount-1) * timeIntervel,
