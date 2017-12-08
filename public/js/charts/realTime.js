@@ -1,8 +1,15 @@
+var timeIntervel = 2000;
+
 Highcharts.setOptions({
     global: {
         useUTC: false
     }
 });
+
+$.ajaxSetup({
+    async: false
+});
+
 function activeLastPointToolip(chart) {
     var points = chart.series[0].points;
     chart.tooltip.refresh(points[points.length -1]);
@@ -17,12 +24,17 @@ $('#container').highcharts({
                 // set up the updating of the chart each second
                 var series = this.series[0],
                     chart = this;
+                
                 setInterval(function () {
-                    var x = (new Date()).getTime(), // current time
-                        y = Math.random();
+                    var x = (new Date()).getTime(); // current time
+                    var y;
+                    $.getJSON('/1/temperature',function (Jsondata) {
+                        y = Number(Jsondata.data);
+                    });
                     series.addPoint([x, y], true, true);
                     activeLastPointToolip(chart)
-                }, 1000);
+                }, timeIntervel);
+
             }
         }
     },
@@ -63,12 +75,16 @@ $('#container').highcharts({
             var data = [],
                 time = (new Date()).getTime(),
                 i;
-            for (i = -19; i <= 0; i += 1) {
-                data.push({
-                    x: time + i * 1000,
-                    y: Math.random()
-                });
-            }
+            //数据量
+            var dataCount = 20*1000/timeIntervel;
+            $.getJSON('/'+dataCount+'/temperature',function (Jsondata) {
+                for (i = 0; i < dataCount; i++) {
+                    data.push({
+                        x: time + (i-dataCount-1) * timeIntervel,
+                        y: Number(Jsondata.data[i])
+                    });
+                }
+            });
             return data;
         }())
     }]
