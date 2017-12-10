@@ -5,14 +5,9 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Flot Charts
-                <small>preview sample</small>
+                实时数据
+                <small>湿度（刷新间隔:2秒）</small>
             </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#">Charts</a></li>
-                <li class="active">Flot</li>
-            </ol>
         </section>
 
         <!-- Main content -->

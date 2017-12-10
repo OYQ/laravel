@@ -15,4 +15,17 @@ class ChartsController extends Controller{
         return view('admin.charts.realTimeHumidity');
     }
 
+    public function lightIntensity(){
+        return view('admin.charts.realTimeLightIntensity');
+    }
+
+    public function soilMoisture(){
+        return view('admin.charts.realTimeSoilMoisture');
+    }
+
+    public function rainfall(){
+        return view('admin.charts.realTimeRainfall');
+    }
+
+
 }

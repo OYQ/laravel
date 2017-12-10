@@ -15,6 +15,9 @@ Route::group(['prefix' => 'admin'],function (){
         //实时数据
         Route::get('/chartRealTime/temperature','\App\admin\Controllers\ChartsController@temperature');
         Route::get('/chartRealTime/humidity','\App\admin\Controllers\ChartsController@humidity');
+        Route::get('/chartRealTime/lightIntensity','\App\admin\Controllers\ChartsController@lightIntensity');
+        Route::get('/chartRealTime/soilMoisture','\App\admin\Controllers\ChartsController@soilMoisture');
+        Route::get('/chartRealTime/rainfall','\App\admin\Controllers\ChartsController@rainfall');
 
         //详细数据
         Route::get('/dataTable','\App\admin\Controllers\TableController@dataTable');

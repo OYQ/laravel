@@ -39,6 +39,9 @@
                 <ul class="treeview-menu">
                     <li><a href="/admin/chartRealTime/temperature"><i class="fa fa-circle-o"></i>温度数据</a></li>
                     <li><a href="/admin/chartRealTime/humidity"><i class="fa fa-circle-o"></i>湿度数据</a></li>
+                    <li><a href="/admin/chartRealTime/lightIntensity"><i class="fa fa-circle-o"></i>光照强度数据</a></li>
+                    <li><a href="/admin/chartRealTime/soilMoisture"><i class="fa fa-circle-o"></i>土壤湿度</a></li>
+                    <li><a href="/admin/chartRealTime/rainfall"><i class="fa fa-circle-o"></i>雨量数据</a></li>
                 </ul>
             </li>
 

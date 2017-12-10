@@ -6,9 +6,8 @@
         <section class="content-header">
             <h1>
                 实时数据
-                <small>温度（刷新间隔:2秒）</small>
+                <small>土壤湿度（刷新间隔:2秒）</small>
             </h1>
-
         </section>
 
         <!-- Main content -->
@@ -16,20 +15,12 @@
             <div class="row">
                 <div class="col-xs-12">
 
-                    <div id="temperature" style="min-width:400px;height:400px"></div>
+                    <div id="soilMoisture" style="min-width:400px;height:400px"></div>
 
                 </div>
                 <!-- /.col -->
             </div>
 
-            <div class="row">
-                <div class="col-xs-12">
-
-                    {{--<div id="humidity" style="min-width:400px;height:400px"></div>--}}
-
-                </div>
-                <!-- /.col -->
-            </div>
 
             <!-- /.row -->
 
@@ -49,8 +40,6 @@
 
 
 @section("page script")
-
     <script src="../../highcharts/highcharts.js"></script>
-    <script src="../../js/charts/realTimeTemperature.js"></script>
-    {{--<script src="../../js/charts/realTimeHumidity.js"></script>--}}
+    <script src="../../js/charts/realTimeSoilMoisture.js"></script>
 @endsection
