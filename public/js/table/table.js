@@ -6,7 +6,6 @@ $(document).ready(function() {
         //数据来源（包括处理分页，排序，过滤） ，即url，action，接口，等等
         ajax: '/admin/tableInfo',
         "columns": [
-            { "data": "id" },
             { "data": "temperature" },
             { "data": "humidity" },
             { "data": "lightIntensity" },

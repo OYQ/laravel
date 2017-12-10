@@ -24,7 +24,6 @@
                             <table id="dataTable" class="stripe" cellspacing="0" width="100%">
                                 <thead>
                                 <tr>
-                                    <th>id</th>
                                     <th>温度</th>
                                     <th>湿度</th>
                                     <th>光照强度</th>
@@ -35,7 +34,6 @@
                                 </thead>
                                 <tfoot>
                                 <tr>
-                                    <th>id</th>
                                     <th>温度</th>
                                     <th>湿度</th>
                                     <th>光照强度</th>
