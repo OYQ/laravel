@@ -28,7 +28,7 @@ $('#soilMoisture').highcharts({
                 setInterval(function () {
                     var x = (new Date()).getTime(); // current time
                     var y;
-                    $.getJSON('/1/soilMoisture',function (Jsondata) {
+                    $.getJSON('/admin/1/soilMoisture',function (Jsondata) {
                         y = Number(Jsondata.data);
                     });
                     series.addPoint([x, y], true, true);
@@ -77,7 +77,7 @@ $('#soilMoisture').highcharts({
                 i;
             //数据量
             var dataCount = 20;
-            $.getJSON('/'+dataCount+'/soilMoisture',function (Jsondata) {
+            $.getJSON('/admin/'+dataCount+'/soilMoisture',function (Jsondata) {
                 for (i = 0; i < dataCount; i++) {
                     data.push({
                         x: time + (i-dataCount-1) * timeIntervel,

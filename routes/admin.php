@@ -22,6 +22,25 @@ Route::group(['prefix' => 'admin'],function (){
         //详细数据
         Route::get('/dataTable','\App\admin\Controllers\TableController@dataTable');
 
+        //API
+        //返回第一个所有数据
+        Route::get('/firstInfo','\App\admin\Controllers\EnvInformationController@firstInfo');
+        //返回所有数据
+        Route::get('/info','\App\admin\Controllers\EnvInformationController@info');
+        //返回table需要的数据数据
+        Route::get('/tableInfo','\App\admin\Controllers\EnvInformationController@tableInfo');
+        //返回前number条温度数据
+        Route::get('/{number}/temperature','\App\admin\Controllers\EnvInformationController@temperature');
+        //返回第一个湿度数据
+        Route::get('/{number}/humidity','\App\admin\Controllers\EnvInformationController@humidity');
+        //返回第一个光照强度数据
+        Route::get('/{number}/lightIntensity','\App\admin\Controllers\EnvInformationController@lightIntensity');
+        //返回第一个土壤湿度数据
+        Route::get('/{number}/soilMoisture','\App\admin\Controllers\EnvInformationController@soilMoisture');
+        //返回第一个雨量数据
+        Route::get('/{number}/rainfall','\App\admin\Controllers\EnvInformationController@rainfall');
+
+
     });
 
 });

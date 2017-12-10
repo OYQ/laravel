@@ -2,6 +2,8 @@
 
 namespace App\admin\Controllers;
 
+use Illuminate\Support\Facades\Input;
+
 class LoginController extends Controller{
     public function index(){
         return view('admin.login.index');
@@ -28,4 +30,5 @@ class LoginController extends Controller{
         \Auth::guard("admin")->logout();
         return redirect('/');
     }
+
 }

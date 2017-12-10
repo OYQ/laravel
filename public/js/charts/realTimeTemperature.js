@@ -28,7 +28,7 @@ $('#temperature').highcharts({
                 setInterval(function () {
                     var x = (new Date()).getTime(); // current time
                     var y;
-                    $.getJSON('/1/temperature',function (Jsondata) {
+                    $.getJSON('/admin/1/temperature',function (Jsondata) {
                         y = Number(Jsondata.data);
                     });
                     series.addPoint([x, y], true, true);
@@ -77,7 +77,7 @@ $('#temperature').highcharts({
                 i;
             //数据量
             var dataCount = 20;
-            $.getJSON('/'+dataCount+'/temperature',function (Jsondata) {
+            $.getJSON('/admin/'+dataCount+'/temperature',function (Jsondata) {
                 for (i = 0; i < dataCount; i++) {
                     data.push({
                         x: time + (i-dataCount-1) * timeIntervel,
