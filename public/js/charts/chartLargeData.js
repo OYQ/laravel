@@ -10,8 +10,8 @@ var time = 1;
 var dic = new Array();
 var con = new Array();
 
-var startTime = getNowFormatDate();
-var endTime = getToDatFormatDate();
+var startTime = getToDateFormatDate();
+var endTime = getNowFormatDate();
 
 dic["temperature"] = "温度";
 dic["humidity"] = "湿度";
@@ -258,7 +258,7 @@ function getNowFormatDate() {
     return currentdate;
 }
 
-function getToDatFormatDate() {
+function getToDateFormatDate() {
     var date = new Date();
     var seperator1 = "-";
     var seperator2 = ":";
