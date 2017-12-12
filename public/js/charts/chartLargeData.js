@@ -73,7 +73,7 @@ function createContainer(container) {
         xAxis: {
             categories: data[2],
             labels:{
-                step:parseInt(data[0]/10),
+                // step:parseInt(data[0]/10),
                 rotation: -60
             },
             tickLength:5,
