@@ -3,9 +3,14 @@
 namespace App\admin\Controllers;
 
 class ChartsController extends Controller{
-    public function chartStatistics(){
-        return view('admin.charts.statistics');
+    public function largeData(){
+        return view('admin.charts.largeData');
     }
+
+    public function meanData(){
+        return view('admin.charts.meanData');
+    }
+
 
     public function temperature(){
         return view('admin.charts.realTimeTemperature');

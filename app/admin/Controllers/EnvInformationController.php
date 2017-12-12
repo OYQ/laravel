@@ -29,13 +29,100 @@ class EnvInformationController extends Controller{
 
     //返回所有数据
     public function info(){
-        $model = env::all();
+        $models = env::all();
         return response()->json(['status' => 1,
             'error' => 0,
             'msg' => '',
-            'data' => $model
+            'data' => $models
         ]);
     }
+
+
+    public function infoTemperature(){
+        $models = env::select('temperature')->orderBy('time', 'desc')->get();
+        $array=[];
+        foreach ($models as $model){
+            $array[] = $model->temperature;
+        }
+
+        return response()->json(['status' => 1,
+            'error' => 0,
+            'msg' => '',
+            'data' => [
+                        'count' => $models->count(),
+                        'source' => $array
+            ]
+        ]);
+    }
+
+    public function infoHumidity(){
+        $models = env::select('humidity')->orderBy('time', 'desc')->get();
+        $array=[];
+        foreach ($models as $model){
+            $array[] = $model->humidity;
+        }
+
+        return response()->json(['status' => 1,
+            'error' => 0,
+            'msg' => '',
+            'data' => [
+                'count' => $models->count(),
+                'source' => $array
+            ]
+        ]);
+    }
+
+    public function infoLightIntensity(){
+        $models = env::select('lightIntensity')->orderBy('time', 'desc')->get();
+        $array=[];
+        foreach ($models as $model){
+            $array[] = $model->lightIntensity;
+        }
+
+        return response()->json(['status' => 1,
+            'error' => 0,
+            'msg' => '',
+            'data' => [
+                'count' => $models->count(),
+                'source' => $array
+            ]
+        ]);
+    }
+
+    public function infoSoilMoisture(){
+        $models = env::select('soilMoisture')->orderBy('time', 'desc')->get();
+        $array=[];
+        foreach ($models as $model){
+            $array[] = $model->soilMoisture;
+        }
+
+        return response()->json(['status' => 1,
+            'error' => 0,
+            'msg' => '',
+            'data' => [
+                'count' => $models->count(),
+                'source' => $array
+            ]
+        ]);
+    }
+
+    public function infoRainfall(){
+        $models = env::select('rainfall')->orderBy('time', 'desc')->get();
+        $array=[];
+        foreach ($models as $model){
+            $array[] = $model->rainfall;
+        }
+
+        return response()->json(['status' => 1,
+            'error' => 0,
+            'msg' => '',
+            'data' => [
+                'count' => $models->count(),
+                'source' => $array
+            ]
+        ]);
+    }
+
 
     public function temperature($number){
         if ($this->checkNumber($number)){

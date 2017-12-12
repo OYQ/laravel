@@ -14,19 +14,21 @@
             </li>
 
 
-            <li class="active">
-                <a href="/admin/chartStatistics">
-                    <i class="fa fa-pie-chart"></i> <span>图表统计</span>
 
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-pie-chart"></i>
+                    <span>图表统计</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
                 </a>
+                <ul class="treeview-menu">
+                    <li><a href="/admin/chart/largeData"><i class="fa fa-circle-o"></i>大数据量统计</a></li>
+                    <li><a href="/admin/chart/meanData"><i class="fa fa-circle-o"></i>均值统计</a></li>
+                </ul>
             </li>
 
-            {{--<li class="active">--}}
-                {{--<a href="/admin/chartRealTime">--}}
-                    {{--<i class="fa  fa-desktop"></i> <span>实时数据</span>--}}
-
-                {{--</a>--}}
-            {{--</li>--}}
 
             <li class="treeview">
                 <a href="#">

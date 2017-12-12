@@ -11,7 +11,8 @@ Route::group(['prefix' => 'admin'],function (){
 
         //数据图表
         //数据统计
-        Route::get('/chartStatistics','\App\admin\Controllers\ChartsController@chartStatistics');
+        Route::get('/chart/largeData','\App\admin\Controllers\ChartsController@largeData');
+        Route::get('/chart/meanData','\App\admin\Controllers\ChartsController@meanData');
         //实时数据
         Route::get('/chartRealTime/temperature','\App\admin\Controllers\ChartsController@temperature');
         Route::get('/chartRealTime/humidity','\App\admin\Controllers\ChartsController@humidity');
@@ -27,6 +28,12 @@ Route::group(['prefix' => 'admin'],function (){
         Route::get('/firstInfo','\App\admin\Controllers\EnvInformationController@firstInfo');
         //返回所有数据
         Route::get('/info','\App\admin\Controllers\EnvInformationController@info');
+        Route::get('/info/temperature','\App\admin\Controllers\EnvInformationController@infoTemperature');
+        Route::get('/info/humidity','\App\admin\Controllers\EnvInformationController@infoHumidity');
+        Route::get('/info/lightIntensity','\App\admin\Controllers\EnvInformationController@infoLightIntensity');
+        Route::get('/info/soilMoisture','\App\admin\Controllers\EnvInformationController@infoSoilMoisture');
+        Route::get('/info/rainfall','\App\admin\Controllers\EnvInformationController@infoRainfall');
+
         //返回table需要的数据数据
         Route::get('/tableInfo','\App\admin\Controllers\EnvInformationController@tableInfo');
         //返回前number条温度数据
