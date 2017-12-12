@@ -45,7 +45,7 @@ class EnvInformationController extends Controller{
         $time=[];
         foreach ($models as $model){
             $source[] = $model->temperature;
-            $time[] = $model->time;
+            $time[] = substr($model->time,5,14);
         }
 
         return response()->json(['status' => 1,
@@ -65,7 +65,7 @@ class EnvInformationController extends Controller{
         $time=[];
         foreach ($models as $model){
             $source[] = $model->humidity;
-            $time[] = $model->time;
+            $time[] = substr($model->time,5,14);
         }
 
         return response()->json(['status' => 1,
@@ -85,7 +85,7 @@ class EnvInformationController extends Controller{
         $time=[];
         foreach ($models as $model){
             $source[] = $model->lightIntensity;
-            $time[] = $model->time;
+            $time[] = substr($model->time,5,14);
         }
 
         return response()->json(['status' => 1,
@@ -105,7 +105,7 @@ class EnvInformationController extends Controller{
         $time=[];
         foreach ($models as $model){
             $source[] = $model->soilMoisture;
-            $time[] = $model->time;
+            $time[] = substr($model->time,5,14);
         }
 
         return response()->json(['status' => 1,
@@ -125,22 +125,7 @@ class EnvInformationController extends Controller{
         $time=[];
         foreach ($models as $model){
             $source[] = $model->rainfall;
-            $time[] = $model->time;
-        }
-
-        return response()->json(['status' => 1,
-            'error' => 0,
-            'msg' => '',
-            'data' => [
-                'count' => $models->count(),
-                'source' => $source,
-                'time' => $time
-            ]
-        ]);$source=[];
-        $time=[];
-        foreach ($models as $model){
-            $source[] = $model->temperature;
-            $time[] = $model->time;
+            $time[] = substr($model->time,5,14);
         }
 
         return response()->json(['status' => 1,
