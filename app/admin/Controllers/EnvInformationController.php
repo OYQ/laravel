@@ -39,7 +39,10 @@ class EnvInformationController extends Controller{
 
 
     public function infoTemperature(){
-        $models = env::select('temperature','time')->orderBy('time', 'desc')->get();
+        $startTime = Input::get('startTime');
+        $endTime = Input::get('endTime');
+
+        $models = env::select('temperature','time')->whereBetween('time',[$startTime,$endTime])->orderBy('time', 'desc')->get();
 
         $source=[];
         $time=[];
@@ -60,7 +63,9 @@ class EnvInformationController extends Controller{
     }
 
     public function infoHumidity(){
-        $models = env::select('humidity','time')->orderBy('time', 'desc')->get();
+        $startTime = Input::get('startTime');
+        $endTime = Input::get('endTime');
+        $models = env::select('humidity','time')->whereBetween('time',[$startTime,$endTime])->orderBy('time', 'desc')->get();
         $source=[];
         $time=[];
         foreach ($models as $model){
@@ -80,7 +85,9 @@ class EnvInformationController extends Controller{
     }
 
     public function infoLightIntensity(){
-        $models = env::select('lightIntensity','time')->orderBy('time', 'desc')->get();
+        $startTime = Input::get('startTime');
+        $endTime = Input::get('endTime');
+        $models = env::select('lightIntensity','time')->whereBetween('time',[$startTime,$endTime])->orderBy('time', 'desc')->get();
         $source=[];
         $time=[];
         foreach ($models as $model){
@@ -100,7 +107,9 @@ class EnvInformationController extends Controller{
     }
 
     public function infoSoilMoisture(){
-        $models = env::select('soilMoisture','time')->orderBy('time', 'desc')->get();
+        $startTime = Input::get('startTime');
+        $endTime = Input::get('endTime');
+        $models = env::select('soilMoisture','time')->whereBetween('time',[$startTime,$endTime])->orderBy('time', 'desc')->get();
         $source=[];
         $time=[];
         foreach ($models as $model){
@@ -120,7 +129,9 @@ class EnvInformationController extends Controller{
     }
 
     public function infoRainfall(){
-        $models = env::select('rainfall','time')->orderBy('time', 'desc')->get();
+        $startTime = Input::get('startTime');
+        $endTime = Input::get('endTime');
+        $models = env::select('rainfall','time')->whereBetween('time',[$startTime,$endTime])->orderBy('time', 'desc')->get();
         $source=[];
         $time=[];
         foreach ($models as $model){
