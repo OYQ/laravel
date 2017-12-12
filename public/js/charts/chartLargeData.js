@@ -166,11 +166,13 @@ $(function () {
             format: 'YYYY-MM-DD HH:mm:ss', //控件中from和to 显示的日期格式
         },
         ranges : {
-            '清空': [null, null],
-            '今天': [moment().hour(4).minutes(0).seconds(0), moment().endOf('day')],
+            '最近1小时': [moment().subtract('hours',1), moment()],
+            // '最近7小时': [moment().subtract('hours',7), moment()],
+            '最近24小时': [moment().subtract('hours',24), moment()],
+            '今天': [moment().hour(0).minutes(0).seconds(0), moment().endOf('day')],
             '昨天': [moment().subtract(1, 'days').startOf('day'), moment().subtract(1, 'days').endOf('day')],
             '7天':  [moment().subtract(7, 'days').startOf('day'), moment().endOf('day')],
-            '15天': [moment().subtract(15, 'days').startOf('day'), moment().endOf('day')],
+            // '15天': [moment().subtract(15, 'days').startOf('day'), moment().endOf('day')],
             '30天': [moment().subtract(30, 'days').startOf('day'), moment().endOf('day')],
             '这个月': [moment().startOf('month').startOf('day'), moment().endOf('month').endOf('day')],
             '上个月': [moment().subtract(1, 'month').startOf('month').startOf('day'), moment().subtract(1, 'month').endOf('month').endOf('day')]
