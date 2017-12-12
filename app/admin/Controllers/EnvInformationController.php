@@ -39,10 +39,13 @@ class EnvInformationController extends Controller{
 
 
     public function infoTemperature(){
-        $models = env::select('temperature')->orderBy('time', 'desc')->get();
-        $array=[];
+        $models = env::select('temperature','time')->orderBy('time', 'desc')->get();
+
+        $source=[];
+        $time=[];
         foreach ($models as $model){
-            $array[] = $model->temperature;
+            $source[] = $model->temperature;
+            $time[] = $model->time;
         }
 
         return response()->json(['status' => 1,
@@ -50,16 +53,19 @@ class EnvInformationController extends Controller{
             'msg' => '',
             'data' => [
                         'count' => $models->count(),
-                        'source' => $array
+                        'source' => $source,
+                        'time' => $time
             ]
         ]);
     }
 
     public function infoHumidity(){
-        $models = env::select('humidity')->orderBy('time', 'desc')->get();
-        $array=[];
+        $models = env::select('humidity','time')->orderBy('time', 'desc')->get();
+        $source=[];
+        $time=[];
         foreach ($models as $model){
-            $array[] = $model->humidity;
+            $source[] = $model->humidity;
+            $time[] = $model->time;
         }
 
         return response()->json(['status' => 1,
@@ -67,16 +73,19 @@ class EnvInformationController extends Controller{
             'msg' => '',
             'data' => [
                 'count' => $models->count(),
-                'source' => $array
+                'source' => $source,
+                'time' => $time
             ]
         ]);
     }
 
     public function infoLightIntensity(){
-        $models = env::select('lightIntensity')->orderBy('time', 'desc')->get();
-        $array=[];
+        $models = env::select('lightIntensity','time')->orderBy('time', 'desc')->get();
+        $source=[];
+        $time=[];
         foreach ($models as $model){
-            $array[] = $model->lightIntensity;
+            $source[] = $model->lightIntensity;
+            $time[] = $model->time;
         }
 
         return response()->json(['status' => 1,
@@ -84,16 +93,19 @@ class EnvInformationController extends Controller{
             'msg' => '',
             'data' => [
                 'count' => $models->count(),
-                'source' => $array
+                'source' => $source,
+                'time' => $time
             ]
         ]);
     }
 
     public function infoSoilMoisture(){
-        $models = env::select('soilMoisture')->orderBy('time', 'desc')->get();
-        $array=[];
+        $models = env::select('soilMoisture','time')->orderBy('time', 'desc')->get();
+        $source=[];
+        $time=[];
         foreach ($models as $model){
-            $array[] = $model->soilMoisture;
+            $source[] = $model->soilMoisture;
+            $time[] = $model->time;
         }
 
         return response()->json(['status' => 1,
@@ -101,16 +113,19 @@ class EnvInformationController extends Controller{
             'msg' => '',
             'data' => [
                 'count' => $models->count(),
-                'source' => $array
+                'source' => $source,
+                'time' => $time
             ]
         ]);
     }
 
     public function infoRainfall(){
-        $models = env::select('rainfall')->orderBy('time', 'desc')->get();
-        $array=[];
+        $models = env::select('rainfall','time')->orderBy('time', 'desc')->get();
+        $source=[];
+        $time=[];
         foreach ($models as $model){
-            $array[] = $model->rainfall;
+            $source[] = $model->rainfall;
+            $time[] = $model->time;
         }
 
         return response()->json(['status' => 1,
@@ -118,7 +133,23 @@ class EnvInformationController extends Controller{
             'msg' => '',
             'data' => [
                 'count' => $models->count(),
-                'source' => $array
+                'source' => $source,
+                'time' => $time
+            ]
+        ]);$source=[];
+        $time=[];
+        foreach ($models as $model){
+            $source[] = $model->temperature;
+            $time[] = $model->time;
+        }
+
+        return response()->json(['status' => 1,
+            'error' => 0,
+            'msg' => '',
+            'data' => [
+                'count' => $models->count(),
+                'source' => $source,
+                'time' => $time
             ]
         ]);
     }
