@@ -190,7 +190,7 @@ label {
 #container{
     /*height: 200px;*/
     /*width: 600px;*/
-    margin: 150px auto;
+    margin: 150px 50px auto;
     display: block;
     position: absolute;
     z-index:100;
