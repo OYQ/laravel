@@ -16,13 +16,14 @@
 
 body{
     background-color: #373737;
+    text-align:center;
 }
 
 
 .login {
     position: relative;
     /*margin: 80px auto;*/
-    width: 400px;
+    /*width: 400px;*/
     padding-right: 32px;
     font-weight: 300;
     color: #a8a7a8;
@@ -43,7 +44,7 @@ input, button, label {
 
 input[type=text], input[type=password] {
     padding: 0 10px;
-    width: 300px;
+    /*width: 300px;*/
     height: 40px;
     color: #bbb;
     text-shadow: 1px 1px 1px black;
@@ -187,9 +188,10 @@ label {
 }
 
 #container{
-    height: 200px;
-    width: 600px;
+    /*height: 200px;*/
+    /*width: 600px;*/
     margin: 150px auto;
+    display: block;
     position: absolute;
     z-index:100;
     /*background: red;*/

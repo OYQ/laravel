@@ -12,37 +12,45 @@
 
     <script src="../../js/login/rainyday.min.js"></script>
     <script src="../../js/login/login.js"></script>
-    {{--<script src="/adminlte/bower_components/jquery/dist/jquery.min.js"></script>--}}
+
+
 
 </head>
 <body onload="run();" id="body">
 <img id="background" alt="background" src="" />
 <div id="container">
-    <span class="label label-primary" id="span">大棚环境监测系统</span>
+    <div class="row">
+        <div class="col-xs-12">
+            <span class="label label-primary" id="span">大棚环境监测系统</span>
 
-    <form method="post" action="/" class="login">
-        {{csrf_field()}}
-        <p>
-            <label for="login">登录名:</label>
-            <input type="text" name="name" id="login" class="form-control" placeholder="名字">
-        </p>
+            <form method="post" action="/" class="login">
+                {{csrf_field()}}
+                <p>
+                    <label for="login">登录名:</label>
+                    <input type="text" name="name" id="login" class="form-control" placeholder="名字">
+                </p>
 
-        <p>
-            <label for="password">密码:</label>
-            <input type="password" name="password" id="password" class="form-control" placeholder="密码">
-        </p>
+                <p>
+                    <label for="password">密码:</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="密码">
+                </p>
 
-        <p class="login-submit">
-            <button type="submit" class="login-button">Login</button>
-        </p>
+                <p class="login-submit">
+                    <button type="submit" class="login-button">Login</button>
+                </p>
 
-    </form>
+            </form>
+        </div>
+    </div>
+
 
 
 </div>
 
 
+<script src="../../adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 
 </body>
+
 </html>
