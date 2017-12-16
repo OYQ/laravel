@@ -32,7 +32,7 @@
 <body class="hold-transition">
     <div class="login-box" id="container">
         <div class="login-logo">
-            <a href="/"><b>大棚环境检测系统</b></a>
+            <a href="/"><b>大棚环境实时监测后台</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
