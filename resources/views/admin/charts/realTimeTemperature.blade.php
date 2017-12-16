@@ -1,5 +1,7 @@
 @extends("admin.layout.main")
-
+@section("title")
+    实时温度
+@endsection
 
 @section("content")
         <!-- Content Header (Page header) -->

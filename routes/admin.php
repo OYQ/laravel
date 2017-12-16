@@ -33,6 +33,8 @@ Route::group(['prefix' => 'admin'],function (){
         Route::get('/info/lightIntensity','\App\admin\Controllers\EnvInformationController@infoLightIntensity');
         Route::get('/info/soilMoisture','\App\admin\Controllers\EnvInformationController@infoSoilMoisture');
         Route::get('/info/rainfall','\App\admin\Controllers\EnvInformationController@infoRainfall');
+        //平均信息
+        Route::get('/average','\App\admin\Controllers\EnvInformationController@averageInfo');
 
         //返回table需要的数据数据
         Route::get('/tableInfo','\App\admin\Controllers\EnvInformationController@tableInfo');

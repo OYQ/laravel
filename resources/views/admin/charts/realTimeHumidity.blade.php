@@ -1,5 +1,7 @@
 @extends("admin.layout.main")
-
+@section("title")
+    实时湿度
+@endsection
 
 @section("content")
         <!-- Content Header (Page header) -->

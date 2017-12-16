@@ -1,5 +1,9 @@
 @extends("admin.layout.main")
 
+@section("title")
+    大数据统计
+@endsection
+
 @section("link")
     <link rel="stylesheet" type="text/css" href="../../css/chart/largeData.css">
     <link rel="stylesheet" href="../../adminlte/plugins/daterangepicker/daterangepicker.css">
@@ -76,14 +80,7 @@
     <script src="../../highcharts/modules/boost.js"></script>
     <script src="../../js/charts/chartLargeData.js"></script>
 
-
-
-
-
-
-
     <script src="../../adminlte/plugins/select2/select2.full.min.js"></script>
-
     <script src="../../adminlte/dist/js/moment.min.js"></script>
     <script src="../../adminlte/plugins/daterangepicker/daterangepicker.js"></script>
 

@@ -151,6 +151,111 @@ class EnvInformationController extends Controller{
     }
 
 
+
+    public function averageInfo(){
+        //0小时，1日，2月
+        $style = Input::get('style');
+        $startTime = Input::get('startTime');
+        $endTime = Input::get('endTime');
+
+        $x=[];
+        $temperature=[];
+        $humidity=[];
+        $lightIntensity=[];
+        $soilMoisture=[];
+        $rainfall=[];
+        $text='';
+
+        if ($style == 0){
+            $models = env::selectRaw('DATE_FORMAT(time,\'%Y%m%d%H\') hours,
+                                    avg(temperature) temperature, 
+                                    avg(humidity) humidity, 
+                                    avg(lightIntensity) lightIntensity, 
+                                    avg(soilMoisture) soilMoisture, 
+                                    avg(rainfall) rainfall')
+                ->whereBetween('time',[$startTime,$endTime])
+                ->groupBy('hours')
+                ->get();
+
+
+            foreach ($models as $model){
+                $x[] = substr($model->hours,4,2).'月'.substr($model->hours,6,2).'日'.substr($model->hours,8,2).'时';
+                $temperature[] = (int)$model->temperature;
+                $humidity[] = (int)$model->humidity;
+                $lightIntensity[] = (int)$model->lightIntensity;
+                $soilMoisture[] = (int)$model->soilMoisture;
+                $rainfall[] = (int)$model->rainfall;
+            }
+            $text = '小时平均数据';
+        }
+
+        if ($style == 1){
+            $models = env::selectRaw('DATE_FORMAT(time,\'%Y%m%d\') days,
+                                    avg(temperature) temperature, 
+                                    avg(humidity) humidity, 
+                                    avg(lightIntensity) lightIntensity, 
+                                    avg(soilMoisture) soilMoisture, 
+                                    avg(rainfall) rainfall')
+                ->whereBetween('time',[$startTime,$endTime])
+                ->groupBy('days')
+                ->get();
+
+
+            foreach ($models as $model){
+                $x[] = substr($model->days,4,2).'月'.substr($model->days,6,2).'日';
+                $temperature[] = (int)$model->temperature;
+                $humidity[] = (int)$model->humidity;
+                $lightIntensity[] = (int)$model->lightIntensity;
+                $soilMoisture[] = (int)$model->soilMoisture;
+                $rainfall[] = (int)$model->rainfall;
+            }
+            $text = '日平均数据';
+        }
+
+        if ($style == 2){
+            $models = env::selectRaw('DATE_FORMAT(time,\'%Y%m\') months,
+                                    avg(temperature) temperature, 
+                                    avg(humidity) humidity, 
+                                    avg(lightIntensity) lightIntensity, 
+                                    avg(soilMoisture) soilMoisture, 
+                                    avg(rainfall) rainfall')
+                ->whereBetween('time',[$startTime,$endTime])
+                ->groupBy('months')
+                ->get();
+
+
+            foreach ($models as $model){
+                $x[] = substr($model->months,0,4).'年'.substr($model->months,4,2).'月';
+                $temperature[] = (int)$model->temperature;
+                $humidity[] = (int)$model->humidity;
+                $lightIntensity[] = (int)$model->lightIntensity;
+                $soilMoisture[] = (int)$model->soilMoisture;
+                $rainfall[] = (int)$model->rainfall;
+            }
+            $text = '月平均数据';
+        }
+
+
+
+        return response()->json(['status' => 1,
+            'error' => 0,
+            'msg' => '',
+            'data' => [
+                'text' => $text,
+                'xAxis' => $x,
+                'temperature' => $temperature,
+                'humidity' => $humidity,
+                'lightIntensity' => $lightIntensity,
+                'soilMoisture' => $soilMoisture,
+                'rainfall' => $rainfall,
+            ]
+        ]);
+    }
+
+
+
+
+
     public function temperature($number){
         if ($this->checkNumber($number)){
             $models = env::select('temperature')->orderBy('time', 'desc') ->take($number) ->get();

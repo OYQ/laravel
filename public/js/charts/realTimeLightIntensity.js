@@ -87,7 +87,10 @@ $('#lightIntensity').highcharts({
             });
             return data;
         }())
-    }]
+    }],
+    credits: {
+        enabled: false
+    }
 }, function(c) {
     activeLastPointToolip(c)
 });

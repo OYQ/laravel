@@ -1,5 +1,7 @@
 @extends("admin.layout.main")
-
+@section("title")
+    仪表盘
+@endsection
 
 @section("content")
     <!-- Content Header (Page header) -->

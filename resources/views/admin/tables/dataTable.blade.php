@@ -1,5 +1,7 @@
 @extends("admin.layout.main")
-
+@section("title")
+    详细数据
+@endsection
 
 @section("content")
 

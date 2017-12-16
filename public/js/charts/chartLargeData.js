@@ -104,8 +104,10 @@ function createContainer(container) {
             name:dic[container],
             data: data[1],
             lineWidth: 0.5
+        }],
+        credits: {
+            enabled: false
         }
-        ]
 
     });
     con[container] = chart;
@@ -195,7 +197,7 @@ $(function () {
 
         startTime = start.format('YYYY-MM-DD HH:mm:ss');
         endTime = end.format('YYYY-MM-DD HH:mm:ss');
-        console.log(startTime,endTime);
+        // console.log(startTime,endTime);
         destroySeries();
         resetVar();
         //创建
