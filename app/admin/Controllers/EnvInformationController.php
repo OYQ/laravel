@@ -20,7 +20,7 @@ class EnvInformationController extends Controller{
 
     //返回第一条所有数据
     public function firstInfo(){
-        $model = env::first();
+        $model = env::orderBy('time', 'desc')->first();
         return response()->json(['status' => 1,
             'error' => 0,
             'msg' => '',
