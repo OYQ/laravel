@@ -22,6 +22,8 @@ Route::group(['prefix' => 'admin'],function (){
 
         //详细数据
         Route::get('/dataTable','\App\admin\Controllers\TableController@dataTable');
+        //警报信息
+        Route::get('/alertMsg','\App\admin\Controllers\TableController@alertMsg');
 
         //API
         //返回第一个所有数据
@@ -38,6 +40,9 @@ Route::group(['prefix' => 'admin'],function (){
 
         //返回table需要的数据数据
         Route::get('/tableInfo','\App\admin\Controllers\EnvInformationController@tableInfo');
+        //返回警报信息需要的数据
+        Route::get('/alertInfo','\App\admin\Controllers\EnvInformationController@alertInfo');
+        Route::get('/deleteAlertInfo','\App\admin\Controllers\EnvInformationController@deleteAlertInfo');
         //返回前number条温度数据
         Route::get('/{number}/temperature','\App\admin\Controllers\EnvInformationController@temperature');
         //返回第一个湿度数据

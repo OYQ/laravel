@@ -2,7 +2,7 @@
 
 namespace App\admin\Controllers;
 
-use App\EnvInformation as env_info;
+
 use App\EnvAlert as env_alert;
 use Illuminate\Support\Facades\Input;
 

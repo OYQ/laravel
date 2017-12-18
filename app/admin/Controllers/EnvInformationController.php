@@ -3,6 +3,7 @@
 namespace App\admin\Controllers;
 
 use App\EnvInformation as env;
+use App\EnvAlert as env_alert;
 use Illuminate\Support\Facades\Input;
 
 class EnvInformationController extends Controller{
@@ -433,6 +434,56 @@ class EnvInformationController extends Controller{
                 'recordsTotal' => (integer)$count,
                 'recordsFiltered' => (integer)$count,
                 'data' => $model
+            ]);
+        }
+
+    }
+
+
+    public function alertInfo()
+    {
+        $draw = Input::get('draw');
+        $start = Input::get('start');
+        $length = Input::get('length');
+
+//        $getSearch = Input::get('search');
+        $count = env_alert::all()->count();
+
+        $alerts = env_alert::orderBy('time', 'desc')->skip($start)->take($length)->get();
+//        return $alerts;
+        $arr = array();
+        foreach($alerts as $alert){
+            $temp = $alert->hasOneInfo;
+            $temp->alertid = $alert->id;
+            $arr[] = $temp;
+//            $arr[] = $alert->hasOneInfo;
+        }
+        return response()->json([
+            'draw' => (integer)$draw,
+            'recordsTotal' => (integer)$count,
+            'recordsFiltered' => (integer)$count,
+            'data' => $arr
+        ]);
+
+    }
+
+    public function deleteAlertInfo(){
+        $id = Input::get('id');
+        $num =  env_alert::where('id',$id)->delete();
+
+        if ($num == 1){
+            return response()->json([
+                'status' => 1,
+                'error' => 0,
+                'msg' => '',
+                'data' => ''
+            ]);
+        }else{
+            return response()->json([
+                'status' => 0,
+                'error' => 1,
+                'msg' => '删除时发生错误',
+                'data' => ''
             ]);
         }
 

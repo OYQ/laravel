@@ -1,6 +1,6 @@
 @extends("admin.layout.main")
 @section("title")
-    详细数据
+    警报信息
 @endsection
 
 @section("content")
@@ -8,7 +8,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                详细数据
+                警报信息
             </h1>
         </section>
 
@@ -19,7 +19,7 @@
 
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">大棚环境详细数据表</h3>
+                            <h3 class="box-title">大棚警报信息数据表</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -45,12 +45,14 @@
                                 </tr>
                                 </tfoot>
                             </table>
+                            <button type="button" class="btn btn-block btn-default" id="deleteBtn">删除选择行</button>
                         </div>
                         <!-- /.box-body -->
                     </div>
                     <!-- /.box -->
                 </div>
                 <!-- /.col -->
+
             </div>
             <!-- /.row -->
         </section>
@@ -67,7 +69,7 @@
     <link rel="stylesheet" type="text/css" href="../../css/table/table.css">
     <script src="../../adminlte/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="../../adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="../../js/table/table.js"></script>
+    <script src="../../js/table/alert.js"></script>
 
 
 

@@ -53,6 +53,13 @@
 
                 </a>
             </li>
+
+            <li class="active">
+                <a href="/admin/alertMsg">
+                    <i class="fa fa-exclamation-triangle"></i> <span>警报信息</span>
+
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->
