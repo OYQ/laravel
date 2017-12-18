@@ -2,14 +2,47 @@ $.ajaxSetup({
     async: false
 });
 
-var style = '0';
-var startTime = getToDateFormatDate();
-var endTime = getNowFormatDate();
-
-var chart;
-
 $(function () {
     //当前信息--------------
+    nowInfo();
+    //---------------------
+
+    //当天每小时信息---------
+    createContainer();
+    //---------------------
+
+    //警报信息--------------
+    alertInfo();
+    //---------------------
+
+
+
+});
+
+
+function alertInfo() {
+    var alertColor = $('#alertColor');
+    var alertImg = $('#alertImg');
+    var alertContain = $('#alertContain');
+    $.getJSON('/admin/firstAlert',function (Jsondata) {
+        if(Jsondata.error == 0){
+            alertContain.html(Jsondata.data.style + '出现报警，报警值为:' + Jsondata.data.zhi + '<br>报警时间:' + Jsondata.data.time);
+            alertColor.removeClass('alert-success');
+            alertImg.removeClass('fa-check');
+            alertColor.addClass('alert-danger');
+            alertImg.addClass('fa-ban');
+        }else{
+            alertContain.html('无警报信息');
+            alertColor.removeClass('alert-danger');
+            alertImg.removeClass('fa-ban');
+            alertColor.addClass('alert-success');
+            alertImg.addClass('fa-check');
+        }
+
+    });
+}
+
+function nowInfo() {
     var temp1 = $('#temperature');
     var temp2 = $('#humidity');
     var temp3 = $('#lightIntensity');
@@ -21,16 +54,13 @@ $(function () {
         temp3.html(Jsondata.data.lightIntensity +'<sup style="font-size: 20px">cd</sup>');
         temp4.html(Jsondata.data.soilMoisture +'<sup style="font-size: 20px">d</sup>');
     });
-    //---------------------
-
-    //当天每小时信息
-    createContainer();
-
-
-});
+}
 
 function getData() {
     var data;
+    var style = '0';
+    var startTime = getToDateFormatDate();
+    var endTime = getNowFormatDate();
     $.getJSON('/admin/average?style='+style+'&startTime='+startTime+'&endTime='+endTime,function (Jsondata) {
         data = Jsondata.data;
     });
@@ -40,7 +70,7 @@ function getData() {
 
 function createContainer() {
     var data = getData();
-    chart = Highcharts.chart('container', {
+    Highcharts.chart('container', {
         chart: {
             type: 'line'
         },

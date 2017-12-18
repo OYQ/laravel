@@ -49,6 +49,11 @@ Route::group(['prefix' => 'admin'],function (){
         //返回第一个雨量数据
         Route::get('/{number}/rainfall','\App\admin\Controllers\EnvInformationController@rainfall');
 
+        //放回所有警报信息
+        Route::get('/allAlerts','\App\admin\Controllers\EnvAlertsController@allAlerts');
+        //放回第一条警报信息
+        Route::get('/firstAlert','\App\admin\Controllers\EnvAlertsController@firstAlert');
+
 
     });
 
