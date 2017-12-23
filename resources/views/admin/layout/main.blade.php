@@ -59,13 +59,7 @@
 
     </div>
 
-        <footer class="main-footer">
-            <div class="pull-right hidden-xs">
-                <b>Version</b> 0.0.1
-            </div>
-            <strong>Copyright &copy; 2017-2018 本网站仅作为毕业设计用途，如发生侵权，请联系删除.</strong> All rights
-            reserved.
-        </footer>
+        @include("admin.layout.footer")
         @yield("control-sidebar")
         <div class="control-sidebar-bg"></div>
 </div>

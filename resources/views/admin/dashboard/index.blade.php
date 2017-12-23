@@ -8,13 +8,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Dashboard
-            <small>Version 2.0</small>
+            仪表盘
+            <small>数据概况</small>
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
-        </ol>
+        
     </section>
 
     <!-- Main content -->
@@ -110,14 +107,6 @@
         </div>
         <!-- /.row -->
 
-        <!-- Main row -->
-        <div class="row">
-
-            天气预报
-
-
-        </div>
-        <!-- /.row -->
     </section>
     <!-- /.content -->
 @endsection
